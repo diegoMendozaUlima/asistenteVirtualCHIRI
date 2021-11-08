@@ -1,0 +1,43 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 50%;
+    height: 90vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+#calendar {
+    width: 60%;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.anadirNotas {
+    width: 70%;
+    position: absolute;
+    top: 85%;
+    left: 35%;
+}
+
+.agregarEvento {
+    width: 40%;
+    align-items: center;
+    text-align: center;
+    height: 30px;
+    background: transparent;
+    border: thin;
+    background: #DA4453;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #89216B, #DA4453);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #89216B, #DA4453); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 10px;
+}
+.agregarEvento::placeholder {
+    color: white;
+}
+#selectTiempo1, #selectTiempo2 {
+    width: 100%;
+}

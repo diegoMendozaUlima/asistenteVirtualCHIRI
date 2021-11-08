@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba Pantalla Calendario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+        
+    <!-- Navbar.css -->
+    <link rel="stylesheet" type="text/css" th:href="@{navbar.css}">
+    <!--Evo calendar-->
+    <link rel="stylesheet" type="text/css" th:href="@{CalendarStyle.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{evo-calendar.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{evo-calendar.midnight-blue.min.css}">
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!--Iconos-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+
+</head>
+
+<body class="darkmode" style="user-select: none;">
+
+    <!-- Barra de Navegación -->
+    <nav class="navbar navbar-expand-md navbar-light border-3 border-bottom border-primary"
+        style="background-color: #B0E0E6; position: relative;">
+        <div class="container-fluid">
+            <div class=" nav-brand">
+                <a class="nav-link" href="../calendario_con_notas/Calendar.html">
+                    Calendario
+                </a>
+            </div>
+
+
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#MenuNavegacion">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="MenuNavegacion" class="collapse navbar-collapse container-fluid ">
+                <div class="navbar-nav container-fluid">
+
+                    <div class="nav-item">
+                        <a class="nav-link" href="../Pizarra/Pizarra_de_notas.html">
+                            Pizarra
+                        </a>
+                    </div>
+
+                    <div class="nav-item dropdown">
+                        <div class="nav-link dropdown-toggle" id="ddUsuario" data-bs-toggle="dropdown">
+                            Usuario
+                        </div>
+                        <ul class="dropdown-menu border-3 border-primary fs-3" style="background-color: #B0E0E6;"
+                            aria-labelledby="ddUsuario">
+                            <li><a class="dropdown-item" href="../Usuario y Ajustes/datos.html">Datos de Usuario</a>
+                            </li>
+                            <li><a class="dropdown-item" href="../Usuario y Ajustes/ajustes.html">Ajustes</a></li>
+                            <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="ms-auto"></div>
+
+                    <div class=" nav-item">
+                        <button id="bdark" class="btn material-icons-outlined dark fs-2">
+                            dark_mode
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="calendar"></div>
+
+        <div class="anadirNotas">
+            <input type="text" class="agregarEvento" data-bs-toggle="modal" data-bs-target="#agregar"
+                placeholder="Agregar evento">
+        </div>
+
+        <!----------FORMULARIO DE BOOTSTRAP------------------>
+         <!-- Modal  Formulario Agregar-->
+         <form action="#" method="POST" th:object="${eventoCreado}" th:action="@{calendario}">
+         <div class="modal fadec " id="agregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: black;">
+            <div class="modal-dialog">
+                <div class="modal-content " id="modal_nueva_nota">
+                    <div class="modal-header">
+                        <div class="col-11">
+                            <h4 class="modal-title text-center" id="exampleModalLabel">NUEVA NOTA</h4>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+
+                        <!--Titulo de la nota-->
+                        <div class="mb-3">
+                            <label for="tituloNota" class="form-label "><h4 >Título de la nota</h4></label>
+                            <!-- <input type="text" class="form-control" id="tituloNota"> -->
+                            <input  th:field="*{titulo}" type="text" class="form-control">
+                            
+                        </div>
+
+                        <!--Contenido de la nota-->
+                        <div class="mb-3">
+                            <label for="contenidoNota" class="form-label"><h4>Contenido de la nota</h4></label>
+                          <!--  <textarea class="form-control" id="contenidoNota" rows="3"></textarea> -->
+                            <input th:field="*{contenido}" type="text" class="form-control" id="contenidoNota"/>
+                        </div>
+
+                        <!--Categoría de la nota-->
+                        <select  th:field="*{categoria}" id="categoriaNota" class="form-select fs-5 " aria-label="Default select example">
+                            <option th:value="'Cine'" selected disabled>Seleccionar una categoría</option>
+                        </select>
+                        
+                        <p></p>
+                        <p>Fecha Inicio</p>
+                        <input th:field="*{fechaInicio}" type="date" pattern="dd/mm/yyyy" id="selectTiempo1" >
+
+                        <p></p>
+                        <p>Fecha Fin</p>
+                        <input th:field="*{fechaFin}" type="date" pattern="DD/MM/YYYY" id="selectTiempo2">
+                    </div>
+                    <p></p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                        <button th:href="@{/}" id="creaNota" type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+    <!-------------------------------------------------------->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    <script src="/scripts/evo-calendar.min.js"></script>
+    <script src="/scripts/initial.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+    <script src="/scripts/notasCalendar.js"></script>
+    <script src="/scripts/nuevoEvento.js"></script>
+
+    <script src="/scripts/Dmode.js"></script>
+    <script src="/scripts/notif.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba Pantalla Pizarra_de_notas</title>
+    
+    <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!--Iconos-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" th:href="@{pizarraStyle.css}">
+    <!--moment.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" referrerpolicy="no-referrer"></script>
+    
+    <!-- Navbar.css -->
+    <link rel="stylesheet" href="/styles/navbar.css">  
+    
+</head>
+<body  id= "bg-principal" class=" darkmode" style="user-select: none;" >
+    
+    <!-- Barra de Navegación -->
+    <nav class="navbar navbar-expand-md navbar-light border-3 border-bottom border-primary" style="background-color: #B0E0E6; position: relative;">
+        <div class="container-fluid">
+            <div class="nav-brand">
+                <a class="nav-link" href="../Pizarra/Pizarra_de_notas.html">
+                    Pizarra
+                </a>
+            </div>
+            
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#MenuNavegacion">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="MenuNavegacion" class="collapse navbar-collapse container-fluid ">
+                <div class="navbar-nav container-fluid">
+                      
+                    <div class=" nav-item">
+                        <a class="nav-link" href="../calendario_con_notas/calendar.html" >
+                            Calendario
+                        </a>
+                    </div>
+
+                    <div class="nav-item dropdown">
+                        <div class="nav-link dropdown-toggle" id="ddUsuario" data-bs-toggle="dropdown" >
+                            Usuario
+                        </div>
+                        <ul class="dropdown-menu border-3 border-primary" style="background-color: #B0E0E6;" aria-labelledby="ddUsuario">
+                            <li><a class="dropdown-item" href="../Usuario y Ajustes/datos.html">Datos de Usuario</a></li>
+                            <li><a class="dropdown-item" href="../Usuario y Ajustes/ajustes.html">Ajustes</a></li>
+                            <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="ms-auto"></div>
+
+                    <div class=" nav-item" >
+                        <button id="bdark" class="btn material-icons-outlined dark fs-5">
+                            dark_mode
+                        </button>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+   
+    <div  class="row container  mx-auto ">
+        <!--Lista de Notas-->
+        <div id="lista_notas" class=" row row-cols-1 row-cols-md-3 g-4 mt-2">
+            <!--Aquí van las notas-->
+        </div>
+        
+        <!--Botones de notas-->
+        <div id="btn_notas" >
+            <!--Boton Filtrar-->
+           
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="material-icons-outlined">
+                        filter_alt
+                    </span>
+                     
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#" onclick="filterObjets('all')">Mostrar Todo</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="filterObjets('trabajo')">Trabajo</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="filterObjets('lista de compras')">Lista de compras</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="filterObjets('estudio')">Estudio</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="filterObjets('deberes')">Deberes</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="filterObjets('deporte')">Deporte</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="filterObjets('música')">Música</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="filterObjets('salud')">Salud</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="filterObjets('viaje')">Viaje</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="filterObjets('libro')">Libro</a></li>
+                  <li><a class="dropdown-item" href="#"onclick="filterObjets('restaurante')" >Restaurante</a></li>
+
+                </ul>
+              </div>
+            
+            <!--Boton Agregar--> 
+            <div >
+                <button id="btnAdd"     class=" btn btn-primary btn-lg material-icons-outlined " data-bs-toggle="modal" data-bs-target="#agregar">
+                    add_circle
+                </button>
+            </div>
+
+            <!--Boton Borrar-->
+            <div >
+                <button id="btnDelete"  class=" btn btn-primary btn-lg material-icons-outlined ">
+                    delete
+                </button>
+            </div>
+            
+        </div>
+
+        <!-- Modal  Formulario Agregar-->
+        <!--<form th:object="${notaCreada}" th:action="@{/pizarra/agregar}" method="post">!-->
+        <form action="#" method="POST" th:object="${notaCreada}" th:action="@{crearNota}">
+        <div class="modal fadec " id="agregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content " id="modal_nueva_nota">
+                    <div class="modal-header">
+                        <div class="col-11">
+                            <h4 class="modal-title text-center" id="exampleModalLabel">NUEVA NOTA</h4>
+                        </div>
+                        <div class="col-1">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+
+                        <!--Titulo de la nota-->
+                        <div class="mb-3">
+                            <label for="tituloNota" class="form-label "><h4 >Título de la nota</h4></label>
+                            <input  th:field="*{titulo}" type="text" class="form-control fs-5">
+                           <!-- <input  th:field="*{titulo}" class="form-control" type="text" th:value="${client.name}" id="clientName" name="clientName" /> -->
+                        </div>
+
+                        <!--Contenido de la nota-->
+                        <div class="mb-3">
+                            <label for="contenidoNota" class="form-label"><h4>Contenido de la nota</h4></label>
+                         <!--   <textarea class="form-control fs-5" id="contenidoNota" rows="3"></textarea> -->
+                            <p><input th:field="*{contenido}" type="text" class="form-control fs-5 " id="contenidoNota"/></p>
+                        </div>
+
+                        <!--Categoría de la nota-->
+                        <select th:field="*{categoria}" id="categoriaNota" class="form-select fs-5 " aria-label="Default select example">
+                            <option th:value="'Cine'" selected disabled>Seleccionar una categoría</option>
+                            
+                        </select>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                        <button th:href="@{/}" id="creaNota" type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+		</form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="pizarraDeNotas.js"></script>
+    <script src="notif.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    
+</body>
