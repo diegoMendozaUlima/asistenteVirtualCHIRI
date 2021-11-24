@@ -1,4 +1,5 @@
 const lista_notas = document.getElementById('lista_notas')
+const mostrar_notas = document.getElementById('muestra')
 const crear_nota = document.getElementById('creaNota')
 const categ_form = document.getElementById('categoriaNota')
 const btn_filtrar =document.getElementById('btn_filter')
@@ -16,6 +17,22 @@ var categ=""
 var cont_cajas=0
 var temp={}
 
+
+window.onload = ()=>{
+    document.getElementById("tituloNota").value="Primera nota"
+    document.getElementById("contenidoNota").value="Contenido de la primera nota"
+    modificado=moment().fromNow()
+    
+
+    crearNota()
+
+    titulo=""
+    content=""
+    modificado=""
+}
+
+
+
 //CREAR NOTA
 function crearNota(){
     
@@ -26,14 +43,24 @@ function crearNota(){
     titulo= document.getElementById("tituloNota").value
     content= document.getElementById("contenidoNota").value
     categ=document.getElementById("categoriaNota").value
-    /*
+    
+   
+    
+/*    titulo = [["${titulo}"]]
+
+    content = [["${contenido}"]]
+    categ = [["${categoria}"]]*/
+    
+    
+    
+    
     nota_creada=
     {
         "titulo": titulo,
         "content": content,
         "categ":categ
     }
-    bd_notas.push(nota_creada)*/
+    bd_notas.push(nota_creada)
     
     
     
@@ -98,15 +125,7 @@ function crearNota(){
     xhr.setRequestHeader("Content.type", "application/json");
     xhr.send(jsonString);*/
 
-    $.ajax({
-            type: 'GET',
-            url: 'Pizarra_de_notas.html',
-            dataType: 'json',
-            data: {titulo: title.innerText, contenido: contenido.innerText, categoria: categ, prioridad: ""}
-            
-        
-});
-
+ 
 
    
     
@@ -114,23 +133,7 @@ function crearNota(){
 }
                         
 
-crear_nota.addEventListener('click',crearNota,true)
 
-
-/*
-$('#creaNota').on("click", function(){
-    
-    
-    $.ajax({
-        type: 'POST',
-        url: 'C:/Users/Master/IdeaProjects/AsistenteChiri',
-        dataType: 'json',
-        data: {titulo: title.innerText, contenido: contenido.innerText, categoria: categ, prioridad: ""}
-        
-    
-    });
-    
-});*/
 
 //CARGAR CATEGORIAS DEL FORMULARIO
 

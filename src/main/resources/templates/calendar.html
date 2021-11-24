@@ -41,7 +41,7 @@
         style="background-color: #B0E0E6; position: relative;">
         <div class="container-fluid">
             <div class=" nav-brand">
-                <a class="nav-link" href="../calendario_con_notas/Calendar.html">
+                <a class="nav-link" th:href="@{calendario}">
                     Calendario
                 </a>
             </div>
@@ -54,7 +54,7 @@
                 <div class="navbar-nav container-fluid">
 
                     <div class="nav-item">
-                        <a class="nav-link" href="../Pizarra/Pizarra_de_notas.html">
+                        <a class="nav-link" th:href="@{crearNota}">
                             Pizarra
                         </a>
                     </div>
@@ -111,7 +111,7 @@
                         <div class="mb-3">
                             <label for="tituloNota" class="form-label "><h4 >Título de la nota</h4></label>
                             <!-- <input type="text" class="form-control" id="tituloNota"> -->
-                            <input  th:field="*{titulo}" type="text" class="form-control">
+                            <input  th:field="*{titulo}" type="text" class="form-control" >
                             
                         </div>
 

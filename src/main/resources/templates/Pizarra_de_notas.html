@@ -26,7 +26,7 @@
     <nav class="navbar navbar-expand-md navbar-light border-3 border-bottom border-primary" style="background-color: #B0E0E6; position: relative;">
         <div class="container-fluid">
             <div class="nav-brand">
-                <a class="nav-link" href="../Pizarra/Pizarra_de_notas.html">
+                <a class="nav-link" th:href="@{crearNota}">
                     Pizarra
                 </a>
             </div>
@@ -38,7 +38,7 @@
                 <div class="navbar-nav container-fluid">
                       
                     <div class=" nav-item">
-                        <a class="nav-link" href="../calendario_con_notas/calendar.html" >
+                        <a class="nav-link" th:href="@{calendario}" >
                             Calendario
                         </a>
                     </div>
@@ -116,6 +116,31 @@
             </div>
             
         </div>
+        
+        <div th:text="${tit}"></div>
+        <div th:text="${cont}"></div>
+        <div th:text="${cat}"></div>
+        <div th:text="${pri}"></div>
+        <div></div>
+        <div th:text="${tit2}"></div>
+        <div th:text="${cont2}"></div>
+        <div th:text="${cat2}"></div>
+        <div th:text="${pri2}"></div>
+        <div></div>
+        <div th:text="${tit3}"></div>
+        <div th:text="${cont3}"></div>
+        <div th:text="${cat3}"></div>
+        <div th:text="${pri3}"></div>
+        <div></div>
+        <div th:text="${tit4}"></div>
+        <div th:text="${cont4}"></div>
+        <div th:text="${cat4}"></div>
+        <div th:text="${pri4}"></div>
+        <div></div>
+        <div th:text="${tit5}"></div>
+        <div th:text="${cont5}"></div>
+        <div th:text="${cat5}"></div>
+        <div th:text="${pri5}"></div>
 
         <!-- Modal  Formulario Agregar-->
         <!--<form th:object="${notaCreada}" th:action="@{/pizarra/agregar}" method="post">!-->
@@ -163,7 +188,15 @@
         </div>
 		</form>
     </div>
+    
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+   <!-- <script th:inline="javascript">
+    	/*<![CDATA[*/
+    	var titulo = "${titulo}"
+    	var content = "${contenido}"
+    	var categ = "${categoria}"
+    	/*]]>*/ 
+	</script> -->
     <script src="pizarraDeNotas.js"></script>
     <script src="notif.js"></script>
     <script src="script.js"></script>
