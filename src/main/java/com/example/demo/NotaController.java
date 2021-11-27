@@ -78,7 +78,7 @@ public class NotaController {
 		  	ConexionBD conectar = new ConexionBD();
 			 Connection conectarDeveloper = conectar.conexionSQLDeveloper();
 			 int contador = 1; 
-			 String consulta = "SELECT TITULO, CONTENIDO, CATEGORIA, PRIORIDAD FROM NOTA where ROWNUM < 6";
+			 String consulta = "SELECT TITULO, CONTENIDO, CATEGORIA, PRIORIDAD FROM NOTA where ROWNUM < 6 order by id DESC";
 			 //String consulta = "SELECT TITULO, CONTENIDO, CATEGORIA, PRIORIDAD FROM NOTA" ; 
 			 Statement stmt = conectarDeveloper.createStatement();
 			 ResultSet rs = stmt.executeQuery(consulta);
@@ -174,15 +174,16 @@ public class NotaController {
 					  String tit = rs.getString("titulo");
 					  String cont = rs.getString("contenido");
 					  String cat = rs.getString("categoria");
-					 // Date fec = rs.getDate("fechaIncio");
-					 // Date fec2 = rs.getDate("fechaFin");
+					  Date fec = rs.getDate("fechaInicio");
+					  Date fec2 = rs.getDate("fechaFin");
 					  
-					  model1.put("titulo", tit);
-					  model1.put("contenido", cont);
-					  model1.put("categoria", cat);
-					 // model1.put("fecha", fec);
-					 // model1.put("fecha2", fec2);
+					  model1.put("tit", tit);
+					  model1.put("cont", cont);
+					  model1.put("cat", cat);
+					 model1.put("fecha", fec);
+					 model1.put("fecha2", fec2);
 					  System.out.println(tit);
+					  System.out.println(fec);
 					  }
 			    return "calendar";
 			  }
