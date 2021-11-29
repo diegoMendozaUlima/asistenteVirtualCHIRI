@@ -32,46 +32,24 @@ import baseDatosConexion.ConexionBD;
 public class NotaController {
 	
 	
-	 @RequestMapping( value="/", method=RequestMethod.GET)
+	 @RequestMapping( value="/index", method=RequestMethod.GET)
 	    public String home() {
 	        return "index";
 	    }
 	
-	 @RequestMapping( value="/login", method=RequestMethod.GET)
-	    public String login() {
-	        return "Login";
-	    }
 	
-	/* 
-	 @RequestMapping("/calendario")
-	 public ModelAndView thymeleafView(Map<String, Object> model1) throws SQLException {
-	    
-		 
-		
-		 ConexionBD conectar = new ConexionBD();
-		 Connection conectarDeveloper = conectar.conexionSQLDeveloper();
-		 String consulta = "SELECT * FROM Evento"; 
-		 Statement stmt = conectarDeveloper.createStatement();
-		 ResultSet rs = stmt.executeQuery(consulta);
-		 while (rs.next()) {
-			  String tit = rs.getString("titulo");
-			  String cont = rs.getString("contenido");
-			  String cat = rs.getString("categoria");
-			  String fec = rs.getString("fechaIncio");
-			  String fec2 = rs.getString("fechaFin");
-			  model.put("titulo", tit);
-			  model.put("contenido", cont);
-			  model.put("categoria", cat);
-			  model.put("fecha", fec);
-			  model.put("fecha2", fec2);
-			  System.out.println("AAAAAAAAAAAAAAAAA");	
-			  return new ModelAndView("/calendario");
-		 }
-		 
-	     return new ModelAndView("thymeleaf/calendario");
-	 }
-	*/
 	
+	 
+	  @GetMapping("/datosUsuario")
+	  public String datosDeUsuario() {
+		  
+		  //Crear un Model 
+		  
+		  
+		  return "DatosUser";
+	  }
+	 
+	 
 	
 	  @GetMapping("/crearNota")
 	  public String greetingForm(Model model, Model model1) throws SQLException {

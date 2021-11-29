@@ -44,11 +44,12 @@
                     </div>
 
                     <div class="nav-item dropdown">
-                        <div class="nav-link dropdown-toggle" id="ddUsuario" data-bs-toggle="dropdown" >
+                        <div class="nav-link dropdown-toggle"  id="ddUsuario" data-bs-toggle="dropdown" >
                             Usuario
                         </div>
+                        
                         <ul class="dropdown-menu border-3 border-primary" style="background-color: #B0E0E6;" aria-labelledby="ddUsuario">
-                            <li><a class="dropdown-item" href="../Usuario y Ajustes/datos.html">Datos de Usuario</a></li>
+                            <li><a class="dropdown-item" th:href="@{datosUsuario}">Datos de Usuario</a></li>
                             <li><a class="dropdown-item" href="../Usuario y Ajustes/ajustes.html">Ajustes</a></li>
                             <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
                         </ul>

@@ -39,12 +39,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             .and()
             .formLogin()
             .loginPage("/login")
-            .permitAll();
+            .permitAll()
+            .defaultSuccessUrl("/crearNota");
+        /*	.and()
+        	.logout()
+        	.logoutUrl("/logout")
+        	.logoutSuccessUrl("/login"); */
         
-        http.authorizeRequests()
+       /* http.authorizeRequests()
             .antMatchers("/admin").hasRole("ADMIN")
             .antMatchers("/user").hasAnyRole("USER","ADMIN")
             .antMatchers("/").permitAll()
-            .and().formLogin();
+            .and().formLogin(); */
     }
 }

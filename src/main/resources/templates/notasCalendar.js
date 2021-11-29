@@ -29,32 +29,16 @@ newEventoVarios(titulo, content, categ, fec1, fec2);
 
 
 //CREAR NOTA
-function crearNota() {
+window.onload =  function crearNota() {
 
-   titulo = [["${titulo}"]]
-
-    content = [["${contenido}"]]
-    categ = [["${categoria}"]]
-    fec1 = [["${fecha1}"]]
-    /*
-    var mes1=fec1.substring(5,7)
-    console.log(mes1)
-    var anno1=fec1.substring(0,4)
-    console.log(anno1)
-    var dia1=fec1.substring(8,10)
-    console.log(dia1)
-
-    var fecBD=dia1+"/"+mes1+"/"+anno1
-    console.log("formato fecha para BD "+fecBD)
-    */
-    fec2 = [["${fecha2}"]]
-    /*var mes2=fec2.substring(5,7)
-    console.log(mes2)
-    var anno2=fec2.substring(0,4)
-    console.log(anno2)
-    var dia2=fec2.substring(8,10)
-    console.log(dia2)
-    */
+   titulo = document.getElementById("tituloN").value
+    content = document.getElementById("contenidoN").value
+    categ = document.getElementById("categoriaN").value
+    fec1 = document.getElementById('selectTiempo1').value
+   fec2 = document.getElementById('selectTiempo2').value
+    
+    
+    
     console.log(fec1)
     console.log(fec2)
     console.log(content)
@@ -77,7 +61,7 @@ function crearNota() {
     document.getElementById("selectTiempo1").value=""
     document.getElementById("selectTiempo2").value=""
 }
-crear_nota.addEventListener('click', crearNota, true)
+//crear_nota.addEventListener('click', crearNota, true)
 
 //CARGAR CATEGORIAS DEL FORMULARIO
 
