@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.apache.tomcat.jni.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,10 @@ public class LoginController {
     @PostMapping("/login")
     public String loginP(){
        // return "Pizarra_de_notas";
+    	
+    	 
+    	
+    	
     	return "index";
     } 
     

@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="DatosUser.css">
     <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <!--CSS-->
+    
     <!--Iconos-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">    
     <!--BOOTSTRAP-->
@@ -62,7 +64,7 @@
             </div>
         </nav>
 
-            <img src="user.png" width="300" height="300" class="mx-auto d-block"/>
+            <img src="/img/user.png" width="300" height="300"/>
             <p>   
             </p>
 
@@ -71,7 +73,7 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-sm-3">
-                        <h6 class="mb-0">Nombres:</h6>
+                        <h6 class="mb-0">Usuario:</h6>
                       </div>
                       <div class="col-sm-9 text-secondary" <span th:utext="${#request.userPrincipal.name}">
                         
@@ -80,29 +82,23 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-3">
-                          <h6 class="mb-0">Apellidos:</h6>
+                          <h6 class="mb-0">Nombre Completo:</h6>
+                                      
                         </div>
-                        <div th:utext="${auth.authority} class="col-sm-9 text-secondary">
-                          Ipanaque Ballon 
-                        </div>
+                        <div th:text="${nomb}" class="col-sm-9 text-secondary">                 
+                      </div>
                       </div>
                       <hr>
                     <div class="row">
                       <div class="col-sm-3">
                         <h6 class="mb-0">Email:</h6>
                       </div>
-                      <div class="col-sm-9 text-secondary">
-                        diegoipa22@gmail.com
+                       <div th:text="${corr}" class="col-sm-9 text-secondary">                 
                       </div>
                     </div>
                     <hr>
                     <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Fecha de nacimiento:</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        22 de junio 2000
-                      </div>
+                      
                     </div>
                     <hr>
                     <div class="row">

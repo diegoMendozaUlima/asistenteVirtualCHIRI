@@ -73,6 +73,88 @@
         <!--Lista de Notas-->
         <div id="lista_notas" class=" row row-cols-1 row-cols-md-3 g-4 mt-2">
             <!--Aquí van las notas-->
+            <div id="nota_prueba1" class="col lista_de_cartas Seleccionar una categoría" draggable="true">
+                <div class="card h-100">
+                    <div class="card-body bg-light">
+                        <h2 class="card-title text-dark" th:text="${tit}"></h2>
+                        <p class="card-text fs-5 text-dark" style="overflow-wrap: break-word;" th:text="${cont}"></p>
+                    </div>
+                    <div class="card-footer " style="background-color: rgba(135, 149, 221, 0.87);">
+                        <small class="text-dark">a few seconds ago</small>
+                    </div>
+                </div>
+            </div>
+            <div id="nota_prueba2" class="col lista_de_cartas Seleccionar una categoría" draggable="true">
+                <div class="card h-100">
+                    <div class="card-body bg-light">
+                        <h2 class="card-title text-dark" th:text="${tit2}"></h2>
+                        <p class="card-text fs-5 text-dark" style="overflow-wrap: break-word;" th:text="${cont2}"></p>
+                    </div>
+                    <div class="card-footer " style="background-color: rgba(135, 149, 221, 0.87);">
+                        <small class="text-dark">a few seconds ago</small>
+                    </div>
+                </div>
+            </div>
+            <div id="nota_prueba3" class="col lista_de_cartas Seleccionar una categoría" draggable="true">
+                <div class="card h-100">
+                    <div class="card-body bg-light">
+                        <h2 class="card-title text-dark" th:text="${tit3}"></h2>
+                        <p class="card-text fs-5 text-dark" style="overflow-wrap: break-word;" th:text="${cont3}"></p>
+                    </div>
+                    <div class="card-footer " style="background-color: rgba(135, 149, 221, 0.87);">
+                        <small class="text-dark">a few seconds ago</small>
+                    </div>
+                </div>
+            </div>
+            <div id="nota_prueba4" class="col lista_de_cartas Seleccionar una categoría" draggable="true">
+                <div class="card h-100">
+                    <div class="card-body bg-light">
+                        <h2 class="card-title text-dark" th:text="${tit4}"></h2>
+                        <p class="card-text fs-5 text-dark" style="overflow-wrap: break-word;" th:text="${cont4}"></p>
+                    </div>
+                    <div class="card-footer " style="background-color: rgba(135, 149, 221, 0.87);">
+                        <small class="text-dark">a few seconds ago</small>
+                    </div>
+                </div>
+            </div>
+            <div id="nota_prueba5" class="col lista_de_cartas Seleccionar una categoría" draggable="true">
+                <div class="card h-100">
+                    <div class="card-body bg-light">
+                        <h2 class="card-title text-dark" th:text="${tit5}"></h2>
+                        <p class="card-text fs-5 text-dark" style="overflow-wrap: break-word;" th:text="${cont5}"></p>
+                    </div>
+                    <div class="card-footer " style="background-color: rgba(135, 149, 221, 0.87);">
+                        <small class="text-dark">a few seconds ago</small>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+            <div th:text="${tit}"></div>
+            <div th:text="${cont}"></div>
+            <div th:text="${cat}"></div>
+            <div th:text="${pri}"></div>
+            <div></div>
+            <div th:text="${tit2}"></div>
+            <div th:text="${cont2}"></div>
+            <div th:text="${cat2}"></div>
+            <div th:text="${pri2}"></div>
+            <div></div>
+            <div th:text="${tit3}"></div>
+            <div th:text="${cont3}"></div>
+            <div th:text="${cat3}"></div>
+            <div th:text="${pri3}"></div>
+            <div></div>
+            <div th:text="${tit4}"></div>
+            <div th:text="${cont4}"></div>
+            <div th:text="${cat4}"></div>
+            <div th:text="${pri4}"></div>
+            <div></div>
+            <div th:text="${tit5}"></div>
+            <div th:text="${cont5}"></div>
+            <div th:text="${cat5}"></div>
+            <div th:text="${pri5}"></div>
+            -->
         </div>
         
         <!--Botones de notas-->
@@ -118,30 +200,7 @@
             
         </div>
         
-        <div th:text="${tit}"></div>
-        <div th:text="${cont}"></div>
-        <div th:text="${cat}"></div>
-        <div th:text="${pri}"></div>
-        <div></div>
-        <div th:text="${tit2}"></div>
-        <div th:text="${cont2}"></div>
-        <div th:text="${cat2}"></div>
-        <div th:text="${pri2}"></div>
-        <div></div>
-        <div th:text="${tit3}"></div>
-        <div th:text="${cont3}"></div>
-        <div th:text="${cat3}"></div>
-        <div th:text="${pri3}"></div>
-        <div></div>
-        <div th:text="${tit4}"></div>
-        <div th:text="${cont4}"></div>
-        <div th:text="${cat4}"></div>
-        <div th:text="${pri4}"></div>
-        <div></div>
-        <div th:text="${tit5}"></div>
-        <div th:text="${cont5}"></div>
-        <div th:text="${cat5}"></div>
-        <div th:text="${pri5}"></div>
+        
 
         <!-- Modal  Formulario Agregar-->
         <!--<form th:object="${notaCreada}" th:action="@{/pizarra/agregar}" method="post">!-->

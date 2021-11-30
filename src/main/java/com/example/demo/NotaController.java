@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.security.Principal;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.Date;
@@ -41,10 +42,24 @@ public class NotaController {
 	
 	 
 	  @GetMapping("/datosUsuario")
-	  public String datosDeUsuario() {
+	  public String datosDeUsuario(Model model, Principal principal) throws SQLException {
 		  
-		  //Crear un Model 
-		  
+		  String username = principal.getName();
+		  ConexionBD conectar = new ConexionBD();
+		  Connection conectarDeveloper = conectar.conexionSQLDeveloper();
+		  String consulta = "select apellido_usuario, correo from Usuario where nombre_usuario = '" + username + "'";
+		  System.out.println(consulta);
+		  Statement stmt = conectarDeveloper.createStatement();
+		  ResultSet rs = stmt.executeQuery(consulta);
+		  while (rs.next()) {
+			  String nomb = rs.getString("apellido_usuario");
+			  String corr = rs.getString("correo");
+			  
+			  model.addAttribute("nomb", nomb);
+			  model.addAttribute("corr", corr);
+			  
+			  
+		  }
 		  
 		  return "DatosUser";
 	  }
@@ -53,7 +68,7 @@ public class NotaController {
 	
 	  @GetMapping("/crearNota")
 	  public String greetingForm(Model model, Model model1) throws SQLException {
-		  	ConexionBD conectar = new ConexionBD();
+		  	 ConexionBD conectar = new ConexionBD();
 			 Connection conectarDeveloper = conectar.conexionSQLDeveloper();
 			 int contador = 1; 
 			 String consulta = "SELECT TITULO, CONTENIDO, CATEGORIA, PRIORIDAD FROM NOTA where ROWNUM < 6 order by id DESC";
@@ -158,8 +173,8 @@ public class NotaController {
 					  model1.put("tit", tit);
 					  model1.put("cont", cont);
 					  model1.put("cat", cat);
-					 model1.put("fecha", fec);
-					 model1.put("fecha2", fec2);
+					  model1.put("fecha", fec);
+					  model1.put("fecha2", fec2);
 					  System.out.println(tit);
 					  System.out.println(fec);
 					  }

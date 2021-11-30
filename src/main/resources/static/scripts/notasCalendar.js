@@ -27,14 +27,22 @@ categ = ""
 
 
 //CREAR NOTA
-window.onload = function crearNota() {
-
-    titulo = document.getElementById("tituloN").value
-    content = document.getElementById("contenidoN").value
-    categ = document.getElementById("categoriaNota").value
-    fec1 = document.getElementById('selectTiempo1').value
+ function crearNota() {
+   
+    /* titulo = document.getElementByName("tituloN").value
+    content = document.getElementByName("contenidoN").value
+    categ = document.getElementByName("categoriaNota").value
+    fec1 = document.getElementByName('feca1').value
     
-    fec2 = document.getElementById('selectTiempo2').value
+    fec2 = document.getElementByName('feca2').value */
+    
+    titulo = "Pepe"
+    content = "Billy"
+    categ = "Trabajo"
+    
+    fec1 = '2021-11-05'
+    fec2 = ""
+    
     /*var mes2=fec2.substring(5,7)
     console.log(mes2)
     var anno2=fec2.substring(0,4)
@@ -43,7 +51,7 @@ window.onload = function crearNota() {
     console.log(dia2)
     */
     console.log(fec1)
-    console.log(fec2)
+   // console.log(fec2)
     console.log(content)
     console.log(categ)
     console.log(titulo)
@@ -91,7 +99,8 @@ window.onload = function crearNota() {
     document.getElementById("selectTiempo2").value=""
 }
 
-crear_nota.addEventListener('click', crearNota, true)
+
+document.addEventListener('load', crearNota, true)
 
 //CARGAR CATEGORIAS DEL FORMULARIO
 
